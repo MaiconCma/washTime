@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Usuário</title>
+    <link rel="stylesheet" href="{% static 'css/adicionar_usuario.css' %}">
+</head>
+<body>
+    <h2>Adicionar Novo Usuário</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Dados do Usuário</h3>
+        {{ user_form.as_p }}
+        <h3>Dados do Cliente</h3>
+        {{ cliente_form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{% static 'css/listar_cliente.css' %}">
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <ul>
+        {% for cliente in clientes %}
+        <li>
+            {{ cliente.nome }} - <a href="{% url 'editar_cliente' cliente.id %}">Editar</a> | 
+            <a href="{% url 'excluir_cliente' cliente.id %}">Excluir</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'adicionar_cliente' %}" class="btn-acao aprovar">Adicionar Novo Cliente</a>
+</body>
+</html>

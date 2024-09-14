@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Carros</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/listar_carro.css' %}"> <!-- Incluindo o CSS -->
+</head>
+<body>
+    <h1>Carros</h1>
+    <a href="{% url 'adicionar_carro' %}" class="btn-acao aprovar">Adicionar Carro</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Cor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carro in carros %}
+            <tr>
+                <td>{{ carro.placa }}</td>
+                <td>{{ carro.marca }}</td>
+                <td>{{ carro.modelo }}</td>
+                <td>{{ carro.ano }}</td>
+                <td>{{ carro.cor }}</td>
+                <td>
+                    <a href="{% url 'editar_carro' carro.pk %}" class="btn-acao editar">Editar</a>
+                    <a href="{% url 'excluir_carro' carro.pk %}" class="btn-acao excluir">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if carros|length == 0 %}
+    <p class="nenhuma-notificacao">Nenhum carro encontrado.</p>
+    {% endif %}
+</body>
+</html>

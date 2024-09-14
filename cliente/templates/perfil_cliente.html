@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Perfil do Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/listar_cliente.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Perfil do Cliente</h1>
+        <nav>
+            <a href="{% url 'listar_carro' %}" class="btn-acao editar">Listar Carros</a>
+            <a href="{% url 'adicionar_carro' %}" class="btn-acao editar">Adicionar Carro</a>
+            <a href="{% url 'adicionar_cliente' %}" class="btn-acao editar">Adicionar Cliente</a>
+            <a href="{% url 'logout' %}" class="btn-acao excluir">Sair</a>
+        </nav>
+    </header>
+    
+    <section>
+        <h2>Detalhes do Cliente</h2>
+        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
+        <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
+        <p><strong>Endereço:</strong> {{ cliente.endereco }}</p>
+        <a href="{% url 'editar_cliente' cliente.id %}" class="btn-acao editar">Editar Perfil</a>
+        <a href="{% url 'excluir_cliente' cliente.id %}" class="btn-acao excluir">Excluir Conta</a>
+    </section>
+</body>
+</html>

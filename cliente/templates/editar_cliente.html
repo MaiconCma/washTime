@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/excluir_cliente.css' %}">
+</head>
+<body>
+    <h1>Editar Cliente</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-acao editar">Salvar</button>
+    </form>
+    <a href="{% url 'perfil_cliente' %}" class="btn-acao">Voltar</a>
+</body>
+</html>

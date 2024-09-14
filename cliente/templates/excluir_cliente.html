@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/excluir_cliente.css' %}">
+</head>
+<body>
+    <h1>Excluir Cliente</h1>
+    <p>Você tem certeza que deseja excluir o cliente "{{ cliente.user.username }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-acao excluir">Excluir</button>
+    </form>
+    <a href="{% url 'perfil_cliente' %}" class="btn-acao">Cancelar</a>
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* listar_carros.css */
+
+/* Estilo para o título */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo para o botão de adicionar carro */
+.btn-acao {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.btn-acao.aprovar {
+    background-color: #007bff; /* Azul */
+    color: #fff;
+}
+
+.btn-acao.aprovar:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-acao.editar {
+    background-color: #28a745; /* Verde */
+    color: #fff;
+}
+
+.btn-acao.editar:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.btn-acao.excluir {
+    background-color: #dc3545; /* Vermelho */
+    color: #fff;
+}
+
+.btn-acao.excluir:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Estilo para a tabela de carros */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+thead th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para a mensagem quando não há carros */
+.nenhuma-notificacao {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+}

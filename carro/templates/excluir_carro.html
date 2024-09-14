@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Carro</title>
+</head>
+<body>
+    <h1>Excluir Carro</h1>
+    <p>Você tem certeza que deseja excluir o carro com placa "{{ carro.placa }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Excluir</button>
+    </form>
+    <a href="{% url 'listar_carro' %}">Cancelar</a>
+</body>
+</html>
