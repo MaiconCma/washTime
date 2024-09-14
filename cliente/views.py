@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
-from .forms import ClienteForm
+from .forms import ClienteForm, UserRegisterForm
 from .models import Cliente
 from django.contrib.auth.forms import AuthenticationForm
 
