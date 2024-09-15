@@ -1,23 +1,55 @@
 /* editar_cliente.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    color: #333;
 }
 
 form {
-    width: 400px;
+    max-width: 600px;
     margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button.btn-acao {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
 button.btn-acao.editar {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
+    background-color: #28a745;
 }
 
-button.btn-acao.editar:hover {
-    background-color: #0056b3;
+a.btn-acao {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    color: #007bff;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.btn-acao:hover, button.btn-acao:hover {
+    opacity: 0.8;
 }

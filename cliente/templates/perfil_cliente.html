@@ -18,12 +18,29 @@
     </header>
     
     <section>
-        <h2>Detalhes do Cliente</h2>
-        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
-        <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
-        <p><strong>Endereço:</strong> {{ cliente.endereco }}</p>
-        <a href="{% url 'editar_cliente' cliente.id %}" class="btn-acao editar">Editar Perfil</a>
-        <a href="{% url 'excluir_cliente' cliente.id %}" class="btn-acao excluir">Excluir Conta</a>
+        <h2>Detalhes dos Clientes</h2>
+        {% if clientes %}
+            <ul>
+                {% for cliente in clientes %}
+                    <li>
+                        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
+                        <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
+                        <p><strong>Endereço:</strong> {{ cliente.endereco }}</p>
+                        <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
+                        <p><strong>Carros:</strong></p>
+                        <ul>
+                            {% for carro in cliente.carros.all %}
+                                <li>{{ carro.placa }} - {{ carro.modelo }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'editar_cliente' cliente.id %}" class="btn-acao editar">Editar Perfil</a>
+                        <a href="{% url 'excluir_cliente' cliente.id %}" class="btn-acao excluir">Excluir Conta</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Você não tem nenhum cliente cadastrado.</p>
+        {% endif %}
     </section>
 </body>
 </html>

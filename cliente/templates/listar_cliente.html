@@ -9,14 +9,39 @@
 </head>
 <body>
     <h1>Lista de Clientes</h1>
-    <ul>
-        {% for cliente in clientes %}
-        <li>
-            {{ cliente.nome }} - <a href="{% url 'editar_cliente' cliente.id %}">Editar</a> | 
-            <a href="{% url 'excluir_cliente' cliente.id %}">Excluir</a>
-        </li>
-        {% endfor %}
-    </ul>
+    
+    {% if clientes %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.cpf }}</td>
+                <td>{{ cliente.endereco }}</td>
+                
+                <td>
+                    <a href="{% url 'editar_cliente' cliente.id %}" class="btn-acao editar">Editar</a>
+                    <a href="{% url 'excluir_cliente' cliente.id %}" class="btn-acao excluir">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="nenhuma-notificacao">Nenhum cliente encontrado.</p>
+    {% endif %}
+
     <a href="{% url 'adicionar_cliente' %}" class="btn-acao aprovar">Adicionar Novo Cliente</a>
+    <a href="{% url 'listar_carro' %}" class="btn-acao editar">Ir para carros</a>
 </body>
 </html>

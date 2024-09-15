@@ -9,6 +9,7 @@
 <body>
     <h1>Carros</h1>
     <a href="{% url 'adicionar_carro' %}" class="btn-acao aprovar">Adicionar Carro</a>
+    <a href="{% url 'listar_cliente' %}" class="btn-acao editar">Voltar ao Perfil</a>
     <table>
         <thead>
             <tr>
@@ -17,6 +18,7 @@
                 <th>Modelo</th>
                 <th>Ano</th>
                 <th>Cor</th>
+                <th>Cliente</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -28,6 +30,7 @@
                 <td>{{ carro.modelo }}</td>
                 <td>{{ carro.ano }}</td>
                 <td>{{ carro.cor }}</td>
+                <td>{{ carro.cliente.nome }}</td> <!-- Exibindo o nome do cliente -->
                 <td>
                     <a href="{% url 'editar_carro' carro.pk %}" class="btn-acao editar">Editar</a>
                     <a href="{% url 'excluir_carro' carro.pk %}" class="btn-acao excluir">Excluir</a>

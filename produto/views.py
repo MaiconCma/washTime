@@ -8,7 +8,7 @@ from .models import Produto
 @login_required
 def listar_produto(request):
     produtos = Produto.objects.all()
-    return render(request, 'produto/listar.html', {'produtos': produtos})
+    return render(request, 'listar_produto.html', {'produtos': produtos})
 
 # Adicionar produto
 @login_required
@@ -22,7 +22,7 @@ def adicionar_produto(request):
             return redirect('listar_produto')
     else:
         form = ProdutoForm()
-    return render(request, 'produto/adicionar.html', {'form': form})
+    return render(request, 'adicionar_produto.html', {'form': form})
 
 # Editar produto
 @login_required
@@ -36,7 +36,7 @@ def editar_produto(request, produto_id):
                 return redirect('listar_produto')
         else:
             form = ProdutoForm(instance=produto)
-        return render(request, 'produto/editar.html', {'form': form})
+        return render(request, 'editar_produto.html', {'form': form})
     else:
         raise PermissionDenied
 
@@ -50,4 +50,4 @@ def excluir_produto(request, produto_id):
             return redirect('listar_produto')
         else:
             raise PermissionDenied
-    return render(request, 'produto/excluir.html', {'produto': produto})
+    return render(request, 'excluir_produto.html', {'produto': produto})

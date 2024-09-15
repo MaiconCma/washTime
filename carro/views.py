@@ -47,3 +47,4 @@ def excluir_carro(request, carro_id):
     carro = get_object_or_404(Carro, id=carro_id)
     if request.method == 'POST':
         carro
+        
