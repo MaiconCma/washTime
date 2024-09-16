@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from cliente.models import Cliente  # Corrigindo a importação do Cliente
 
 class Carro(models.Model):
+    nome = models.CharField(max_length=100)
     marca = models.CharField(max_length=100)
     modelo = models.CharField(max_length=100)
     ano = models.IntegerField()

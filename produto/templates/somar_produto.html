@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Quantidade ao Produto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/adicionar_produto.css' %}">
+</head>
+<body>
+    <h1>Adicionar Quantidade ao Produto</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="quantidade">Quantidade a adicionar:</label>
+        <input type="number" id="quantidade" name="quantidade" min="1" required>
+        <button type="submit">Adicionar</button>
+    </form>
+    <a href="{% url 'listar_produto' %}">Voltar</a>
+</body>
+</html>

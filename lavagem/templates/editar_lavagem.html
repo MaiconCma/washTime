@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Produto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/adicionar_produto.css' %}">
+</head>
+<body>
+    {% block content %}
+    <h1>Editar Lavagem</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'listar_lavagem' %}">Voltar</a>
+    {% endblock %}
+</body>
+</html>

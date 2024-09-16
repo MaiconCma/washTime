@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Listar Produtos</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/listar_produto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/listar_carro.css' %}">
 </head>
 <body>
     <h1>Produtos</h1>
-    <a href="{% url 'adicionar_produto' %}">Adicionar Produto</a>
+    <a href="{% url 'adicionar_produto' %}" class="btn-acao aprovar">Adicionar Produto</a>
     <table>
         <thead>
             <tr>
@@ -16,7 +16,6 @@
                 <th>Descrição</th>
                 <th>Preço</th>
                 <th>Quantidade</th>
-                <th>Categoria</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -27,10 +26,10 @@
                 <td>{{ produto.descricao }}</td>
                 <td>{{ produto.preco }}</td>
                 <td>{{ produto.quantidade }}</td>
-                <td>{{ produto.categoria }}</td>
                 <td>
-                    <a href="{% url 'editar_produto' produto.pk %}">Editar</a>
-                    <a href="{% url 'excluir_produto' produto.pk %}">Excluir</a>
+                    <a href="{% url 'editar_produto' produto.pk %}" class="btn-acao editar">Editar</a>
+                    <a href="{% url 'excluir_produto' produto.pk %}" class="btn-acao excluir">Excluir</a>
+                    <a href="{% url 'somar_produto' produto.pk %}" class="btn-acao aprovar">Somar</a> <!-- Novo botão -->
                 </td>
             </tr>
             {% endfor %}

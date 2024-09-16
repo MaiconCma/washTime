@@ -41,10 +41,10 @@ def editar_carro(request, carro_id):
         form = CarroForm(instance=carro)
     return render(request, 'editar_carro.html', {'form': form})
 
-# Excluir carro
 @login_required
 def excluir_carro(request, carro_id):
     carro = get_object_or_404(Carro, id=carro_id)
     if request.method == 'POST':
-        carro
-        
+        carro.delete()
+        return redirect('listar_carro')
+    return render(request, 'excluir_carro.html', {'carro': carro})

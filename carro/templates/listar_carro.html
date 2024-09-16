@@ -1,10 +1,11 @@
+<!-- listar_carro.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Listar Carros</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/listar_carro.css' %}"> <!-- Incluindo o CSS -->
+    <link rel="stylesheet" href="{% static 'css/listar_carro.css' %}">
 </head>
 <body>
     <h1>Carros</h1>
@@ -16,6 +17,7 @@
                 <th>Placa</th>
                 <th>Marca</th>
                 <th>Modelo</th>
+                <th>Nome</th>
                 <th>Ano</th>
                 <th>Cor</th>
                 <th>Cliente</th>
@@ -28,12 +30,12 @@
                 <td>{{ carro.placa }}</td>
                 <td>{{ carro.marca }}</td>
                 <td>{{ carro.modelo }}</td>
+                <td>{{ carro.nome }}</td>
                 <td>{{ carro.ano }}</td>
                 <td>{{ carro.cor }}</td>
-                <td>{{ carro.cliente.nome }}</td> <!-- Exibindo o nome do cliente -->
+                <td>{{ carro.cliente.nome }}</td>
                 <td>
-                    <a href="{% url 'editar_carro' carro.pk %}" class="btn-acao editar">Editar</a>
-                    <a href="{% url 'excluir_carro' carro.pk %}" class="btn-acao excluir">Excluir</a>
+                    <a href="{% url 'adicionar_lavagem' carro.id %}" class="btn-acao editar">Lavar</a>
                 </td>
             </tr>
             {% endfor %}

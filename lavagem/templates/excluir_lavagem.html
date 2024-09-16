@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Produto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/adicionar_produto.css' %}">
+</head>
+<body>
+
+
+    {% block content %}
+    <h1>Tem certeza que deseja excluir a lavagem "{{ lavagem.descricao }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+    <a href="{% url 'listar_lavagem' %}">Voltar</a>
+    {% endblock %}
+    
+</body>
+</html>

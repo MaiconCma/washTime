@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Produto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/listar_produto.css' %}">
+</head>
+<body>
+
+    {% block content %}
+    <h1>Lista de Lavagens</h1>
+    <a href="{% url 'listar_lavagem' %}">Adicionar Nova Lavagem</a>
+    <ul>
+        {% for lavagem in lavagens %}
+            <li>{{ lavagem.descricao }} - {{ lavagem.tipo }} - {{ lavagem.preco }}
+                <a href="{% url 'editar_lavagem' lavagem.id %}">Editar</a>
+                <a href="{% url 'excluir_lavagem' lavagem.id %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+    
+</body>
+</html>
