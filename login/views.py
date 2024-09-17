@@ -19,7 +19,7 @@ def cadastro(request):
 
         user.save()
 
-        return HttpResponse('Usuario cadastrado com sucesso ' + username)
+        return redirect(login)
 
 def login(request):
     if request.method == "GET":
@@ -34,12 +34,12 @@ def login(request):
             login_django(request, user)
             
             
-            return redirect('listar_cliente')
+            return redirect('plataforma')
         else:
-            return redirect('cadastro')
+            return redirect('login')
 
 def plataforma(request):
     if request.user.is_authenticated:
-        return render(request, 'listar_cliente')
+        return render(request, 'inicial.html')
     
     return HttpResponse('Voce não está autenticado')

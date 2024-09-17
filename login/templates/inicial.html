@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/inicial.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>WashTime</h2>
+        <p>Escolha uma das opções abaixo:</p>
+
+        <div class="box-container">
+            <div class="box">
+                <h3>Cliente</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="btn" type="submit" formaction="{% url 'listar_cliente' %}">Acessar Cliente</button>
+                </form>
+            </div>
+            <div class="box">
+                <h3>Produto</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="btn" type="submit" formaction="{% url 'listar_produto' %}">Adicionar Produto</button>
+                </form>
+            </div>
+            <div class="box">
+                <h3>Carros</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="btn" type="submit" formaction="{% url 'listar_carro' %}">Acessar Carros</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -5,13 +5,11 @@ from cliente.models import Carro, Cliente
 from lavagem.forms import LavagemForm
 from lavagem.models import Lavagem
 
-# Create your views here.
 @login_required
 def listar_lavagem(request):
     lavagens = Lavagem.objects.all()
     return render(request, 'listar_lavagem.html', {'lavagens': lavagens})
 
-# Adicionar lavagem
 @login_required
 def adicionar_lavagem(request):
     if request.method == 'POST':
@@ -30,7 +28,6 @@ def adicionar_lavagem(request):
         form = LavagemForm()
     return render(request, 'adicionar_lavagem.html', {'form': form})
 
-# Editar lavagem
 @login_required
 def editar_lavagem(request, lavagem_id):
     lavagem = get_object_or_404(Lavagem, id=lavagem_id)
@@ -46,7 +43,6 @@ def editar_lavagem(request, lavagem_id):
     else:
         raise PermissionDenied
 
-# Excluir lavagem
 @login_required
 def excluir_lavagem(request, lavagem_id):
     lavagem = get_object_or_404(Lavagem, id=lavagem_id)

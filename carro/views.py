@@ -4,13 +4,11 @@ from .models import Carro
 from .forms import CarroForm
 from cliente.models import Cliente
 
-# Listar carros
 @login_required
 def listar_carro(request):
     carros = Carro.objects.all()
     return render(request, 'listar_carro.html', {'carros': carros})
 
-# Adicionar carro
 @login_required
 def adicionar_carro(request):
     if request.method == 'POST':
@@ -28,7 +26,6 @@ def adicionar_carro(request):
         form = CarroForm()
     return render(request, 'adicionar_carro.html', {'form': form})
 
-# Editar carro
 @login_required
 def editar_carro(request, carro_id):
     carro = get_object_or_404(Carro, id=carro_id)

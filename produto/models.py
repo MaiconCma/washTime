@@ -8,15 +8,14 @@ class Produto(models.Model):
     descricao = models.TextField()
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     quantidade = models.PositiveIntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Relacionando com o usuário que adicionou o produto
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
     def __str__(self):
         return self.nome
 class Gasto(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     carro = models.ForeignKey(Carro, on_delete=models.CASCADE)
     quantidade = models.PositiveIntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Usuário que registrou o gasto
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
     data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

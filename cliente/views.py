@@ -6,12 +6,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-
 from produto.forms import UserRegisterForm
-
 from .forms import ClienteForm
 from .models import Cliente
-
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(
@@ -23,7 +20,6 @@ class UserLoginForm(AuthenticationForm):
         label='Senha',
         widget=forms.PasswordInput
     )
-
 
 @login_required
 def editar_cliente(request, cliente_id):
@@ -41,7 +37,6 @@ def editar_cliente(request, cliente_id):
     else:
         raise PermissionDenied
 
-
 @login_required
 def excluir_cliente(request, cliente_id):
     cliente = get_object_or_404(Cliente, id=cliente_id)
@@ -54,12 +49,10 @@ def excluir_cliente(request, cliente_id):
     else:
         raise PermissionDenied
 
-
 @login_required
 def listar_cliente(request):
     clientes = Cliente.objects.filter(user=request.user)
-    return render(request, 'listar_cliente.html', {'clientes': clientes})  # Corrigi o nome da variável
-
+    return render(request, 'listar_cliente.html', {'clientes': clientes}) 
 
 @login_required
 def adicionar_cliente(request):
@@ -75,7 +68,6 @@ def adicionar_cliente(request):
         form = ClienteForm()
     return render(request, 'adicionar_cliente.html', {'form': form})
 
-
 def login_view(request):
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
@@ -90,12 +82,10 @@ def login_view(request):
         form = UserLoginForm()
     return render(request, 'login/login.html', {'form': form})
 
-
 def custom_logout(request):
     logout(request)
     messages.info(request, 'Você saiu da sua conta.')
     return redirect('login')
-
 
 @login_required
 def adicionar_usuario(request):

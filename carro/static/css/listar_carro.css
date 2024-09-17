@@ -1,6 +1,3 @@
-/* listar_carros.css */
-
-/* Estilo para o título */
 h1 {
     text-align: center;
     font-size: 28px;
@@ -9,7 +6,6 @@ h1 {
     color: #333;
 }
 
-/* Estilo para o botão de adicionar carro */
 .btn-acao {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -24,7 +20,7 @@ h1 {
 }
 
 .btn-acao.aprovar {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff; 
     color: #fff;
 }
 
@@ -34,7 +30,7 @@ h1 {
 }
 
 .btn-acao.editar {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     color: #fff;
 }
 

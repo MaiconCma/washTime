@@ -1,4 +1,4 @@
-/* Global Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,6 @@ body {
     align-items: center;
 }
 
-/* Main Container */
 .container {
     width: 100%;
     max-width: 400px;
@@ -25,14 +24,12 @@ body {
     text-align: center;
 }
 
-/* Heading */
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Labels */
 label {
     display: block;
     text-align: left;
@@ -41,11 +38,10 @@ label {
     color: #555;
 }
 
-/* Input Fields */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: calc(100% - 22px); /* Ajustado para considerar o padding */
+    width: calc(100% - 22px); 
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -54,7 +50,6 @@ input[type="password"] {
     transition: border-color 0.3s ease;
 }
 
-/* Input Focus State */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
@@ -62,7 +57,6 @@ input[type="password"]:focus {
     outline: none;
 }
 
-/* Submit Button */
 button {
     width: 100%;
     background-color: #007BFF;
@@ -75,12 +69,10 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* Button Hover State */
 button:hover {
     background-color: #0056b3;
 }
 
-/* Spacing for line breaks */
 br {
     margin-bottom: 10px;
 }

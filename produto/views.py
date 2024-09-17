@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-
 from carro.models import Carro
 from .forms import ProdutoForm
 from .models import Gasto, Produto
@@ -23,7 +22,6 @@ def adicionar_produto(request):
     else:
         form = ProdutoForm()
     return render(request, 'adicionar_produto.html', {'form': form})
-
 
 @login_required
 def editar_produto(request, produto_id):
@@ -50,7 +48,6 @@ def excluir_produto(request, produto_id):
         else:
             raise PermissionDenied
     return render(request, 'excluir_produto.html', {'produto': produto})
-
 
 @login_required
 def somar_produto(request, produto_id):

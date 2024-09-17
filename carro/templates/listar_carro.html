@@ -1,4 +1,3 @@
-<!-- listar_carro.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +8,8 @@
 </head>
 <body>
     <h1>Carros</h1>
+    <a href="{% url 'plataforma' %}" class="btn-acao editar">Inicio</a>
     <a href="{% url 'adicionar_carro' %}" class="btn-acao aprovar">Adicionar Carro</a>
-    <a href="{% url 'listar_cliente' %}" class="btn-acao editar">Voltar ao Perfil</a>
     <table>
         <thead>
             <tr>
@@ -35,7 +34,9 @@
                 <td>{{ carro.cor }}</td>
                 <td>{{ carro.cliente.nome }}</td>
                 <td>
-                    <a href="{% url 'adicionar_lavagem' carro.id %}" class="btn-acao editar">Lavar</a>
+                    <a href="{% url 'adicionar_lavagem' carro.id %}" class="btn-acao aprovar ">Lavar</a>
+                    <a href="{% url 'excluir_carro' carro.id %}" class="btn-acao excluir">Excluir</a>
+                    <a href="{% url 'editar_carro' carro.id %}" class="btn-acao editar">Editar</a>
                 </td>
             </tr>
             {% endfor %}

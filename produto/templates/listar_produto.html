@@ -8,7 +8,9 @@
 </head>
 <body>
     <h1>Produtos</h1>
+    <a href="{% url 'plataforma' %}" class="btn-acao editar">Inicio</a>
     <a href="{% url 'adicionar_produto' %}" class="btn-acao aprovar">Adicionar Produto</a>
+    <a href="{% url 'registrar_gasto_produto' %}" class="btn-acao excluir">Produto Utilizado</a>
     <table>
         <thead>
             <tr>
@@ -29,7 +31,7 @@
                 <td>
                     <a href="{% url 'editar_produto' produto.pk %}" class="btn-acao editar">Editar</a>
                     <a href="{% url 'excluir_produto' produto.pk %}" class="btn-acao excluir">Excluir</a>
-                    <a href="{% url 'somar_produto' produto.pk %}" class="btn-acao aprovar">Somar</a> <!-- Novo botão -->
+                    <a href="{% url 'somar_produto' produto.pk %}" class="btn-acao aprovar">Adicionar mercadoria</a> 
                 </td>
             </tr>
             {% endfor %}
