@@ -1,15 +1,18 @@
 from django import forms
-from .models import Produto, User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from .models import Produto
+
 
 class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
         fields = ['nome', 'descricao', 'preco', 'quantidade']
 
-class UserRegisterForm(forms.ModelForm):
+
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField(required=False)
+
     class Meta:
         model = User
-        fields = ['username', 'password']
-        widgets = {
-            'password': forms.PasswordInput
-        }
+        fields = ['username', 'email', 'password1', 'password2']

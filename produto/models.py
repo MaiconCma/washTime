@@ -1,24 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from carro.models import Carro
 
 class Produto(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='produtos')
     nome = models.CharField(max_length=100)
-    descricao = models.TextField()
+    descricao = models.TextField(blank=True)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
-    quantidade = models.PositiveIntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    def __str__(self):
-        return self.nome
-class Gasto(models.Model):
-    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
-    carro = models.ForeignKey(Carro, on_delete=models.CASCADE)
-    quantidade = models.PositiveIntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    data = models.DateTimeField(auto_now_add=True)
+    quantidade = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f'{self.quantidade}x {self.produto.nome} gasto(s) no carro {self.carro.placa} ({self.carro.modelo})'
-    
-    
+        return self.nome

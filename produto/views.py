@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from carro.models import Carro
 from .forms import ProdutoForm
-from .models import Gasto, Produto
+from .models import Produto
 
 @login_required
 def listar_produto(request):

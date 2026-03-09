@@ -1,55 +1,51 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied
-from cliente.models import Carro, Cliente
-from lavagem.forms import LavagemForm
-from lavagem.models import Lavagem
+from .forms import LavagemForm
+from .models import Lavagem
+
 
 @login_required
 def listar_lavagem(request):
-    lavagens = Lavagem.objects.all()
+    lavagens = Lavagem.objects.filter(user=request.user)
     return render(request, 'listar_lavagem.html', {'lavagens': lavagens})
+
 
 @login_required
 def adicionar_lavagem(request):
     if request.method == 'POST':
-        form = LavagemForm(request.POST)
+        form = LavagemForm(request.POST, user=request.user)
         if form.is_valid():
-            cliente = form.cleaned_data['cliente']
-            carro = form.cleaned_data['carro']
-            
-            if request.user == cliente.user or request.user.is_staff:
-                form.save()
-                return redirect('listar_lavagem')
-            else:
-                raise PermissionDenied
-            
+            lavagem = form.save(commit=False)
+            lavagem.user = request.user
+            lavagem.save()
+            return redirect('listar_lavagem')
     else:
-        form = LavagemForm()
+        form = LavagemForm(user=request.user)
+
     return render(request, 'adicionar_lavagem.html', {'form': form})
+
 
 @login_required
 def editar_lavagem(request, lavagem_id):
-    lavagem = get_object_or_404(Lavagem, id=lavagem_id)
-    if request.user == lavagem.user or request.user.is_staff:
-        if request.method == 'POST':
-            form = LavagemForm(request.POST, instance=lavagem)
-            if form.is_valid():
-                form.save()
-                return redirect('listar_lavagem')
-        else:
-            form = LavagemForm(instance=lavagem)
-        return render(request, 'editar_lavagem.html', {'form': form})
+    lavagem = get_object_or_404(Lavagem, id=lavagem_id, user=request.user)
+
+    if request.method == 'POST':
+        form = LavagemForm(request.POST, instance=lavagem, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_lavagem')
     else:
-        raise PermissionDenied
+        form = LavagemForm(instance=lavagem, user=request.user)
+
+    return render(request, 'editar_lavagem.html', {'form': form})
+
 
 @login_required
 def excluir_lavagem(request, lavagem_id):
-    lavagem = get_object_or_404(Lavagem, id=lavagem_id)
-    if request.user == lavagem.user or request.user.is_staff:
-        if request.method == 'POST':
-            lavagem.delete()
-            return redirect('listar_lavagem')
-    else:
-        raise PermissionDenied
+    lavagem = get_object_or_404(Lavagem, id=lavagem_id, user=request.user)
+
+    if request.method == 'POST':
+        lavagem.delete()
+        return redirect('listar_lavagem')
+
     return render(request, 'excluir_lavagem.html', {'lavagem': lavagem})
